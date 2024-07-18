@@ -7,10 +7,10 @@ from pytoniq import LiteClient
 import socket
 import struct
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ton_parser.ton_parser.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ton_parser.settings')
 django.setup()
 
-from .models import Address
+from blockchain.models import Address
 
 logging.basicConfig(level=logging.INFO)
 
