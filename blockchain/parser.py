@@ -14,6 +14,7 @@ from .models import Address
 
 logging.basicConfig(level=logging.INFO)
 
+
 @sync_to_async
 def save_address_to_db(address, raw_data):
     try:
@@ -26,6 +27,7 @@ def save_address_to_db(address, raw_data):
     except Exception as e:
         logging.error(f"Error saving address to DB: {e}")
 
+
 def tlobject_to_dict(tlobject):
     if isinstance(tlobject, dict):
         return {key: tlobject_to_dict(value) for key, value in tlobject.items()}
@@ -36,13 +38,15 @@ def tlobject_to_dict(tlobject):
     else:
         return tlobject
 
+
 def int_to_ip(ip_int):
     return socket.inet_ntoa(struct.pack('!I', ip_int))
+
 
 async def parse_blockchain():
     logging.info("Starting blockchain parsing...")
 
-    ip_int = 84478511  # Пример значения, замените на реальное
+    ip_int = 84478511
     host = int_to_ip(ip_int)
     port = 19949
     server_pub_key = 'n4VDnSCUuSpjnCyUk9e3QOOd6o0ItSWYbTnW3Wnn8wk='
@@ -152,6 +156,7 @@ async def process_transaction(transaction, lite_client):
                     logging.info("No destination address found in outgoing message")
     except Exception as e:
         logging.error(f"Error in process_transaction: {e}")
+
 
 if __name__ == '__main__':
     try:

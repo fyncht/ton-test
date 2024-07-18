@@ -4,6 +4,7 @@ from ton import TonlibClient
 from .models import Address
 from asgiref.sync import sync_to_async
 
+
 async def address_worker():
     TonlibClient.enable_unaudited_binaries()  # Включаем использование неаудированных бинарных файлов
     ton_client = TonlibClient()
@@ -16,11 +17,12 @@ async def address_worker():
                 await process_address(ton_client, address)
             except Exception as e:
                 print(f"Error processing address {address}: {e}")
-        await asyncio.sleep(10)  # Интервал между запросами, можно настроить
+        await asyncio.sleep(10)
+
 
 async def process_address(ton_client, address):
     try:
-        contract = await ton_client.raw_get_account_state(address=address.address)  # Используем правильный метод
+        contract = await ton_client.raw_get_account_state(address=address.address)
         address.code = contract['code']
         address.data = contract['data']
         address.status = 1

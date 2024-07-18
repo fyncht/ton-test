@@ -1,5 +1,5 @@
 import json
-from ton_parser.blockchain.models import Address
+from blockchain.models import Address
 
 
 def export_addresses_to_json(file_path: str):

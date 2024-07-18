@@ -25,7 +25,7 @@
     python manage.py start_parsing
     ```
 
-2. Экспорт данных в JSON:
+2. Экспорт данных в JSON - пока в доработке:
     ```bash
     python blockchain/export.py
     ```
